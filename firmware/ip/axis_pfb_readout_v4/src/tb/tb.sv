@@ -246,31 +246,31 @@ initial begin
 	axi_mst_0_agent.AXI4LITE_WRITE_BURST(9*4, prot, 0, resp);
 	
 	// FREQ1/PHASE1.
-	axi_mst_0_agent.AXI4LITE_WRITE_BURST(10*4, prot, freq(1,10), resp);
+	axi_mst_0_agent.AXI4LITE_WRITE_BURST(10*4, prot, freq(1,8), resp);
 	axi_mst_0_agent.AXI4LITE_WRITE_BURST(11*4, prot, 0, resp);
 
 	// FREQ2/PHASE2.
-	axi_mst_0_agent.AXI4LITE_WRITE_BURST(12*4, prot, freq(1, 33), resp);
+	axi_mst_0_agent.AXI4LITE_WRITE_BURST(12*4, prot, freq(2, 8), resp);
 	axi_mst_0_agent.AXI4LITE_WRITE_BURST(13*4, prot, 0, resp);
 
 	// FREQ3/PHASE3.
-	axi_mst_0_agent.AXI4LITE_WRITE_BURST(14*4, prot, freq(1, 3), resp);
+	axi_mst_0_agent.AXI4LITE_WRITE_BURST(14*4, prot, freq(3, 8), resp);
 	axi_mst_0_agent.AXI4LITE_WRITE_BURST(15*4, prot, 0, resp);
 
 	// FREQ4/PHASE4.
-	axi_mst_0_agent.AXI4LITE_WRITE_BURST(16*4, prot, freq(1, 3), resp);
+	axi_mst_0_agent.AXI4LITE_WRITE_BURST(16*4, prot, freq(4, 8), resp);
 	axi_mst_0_agent.AXI4LITE_WRITE_BURST(17*4, prot, 0, resp);
 
 	// FREQ5/PHASE5.
-	axi_mst_0_agent.AXI4LITE_WRITE_BURST(18*4, prot, freq(1, 3), resp);
+	axi_mst_0_agent.AXI4LITE_WRITE_BURST(18*4, prot, freq(5, 8), resp);
 	axi_mst_0_agent.AXI4LITE_WRITE_BURST(19*4, prot, 0, resp);
 
 	// FREQ6/PHASE6.
-	axi_mst_0_agent.AXI4LITE_WRITE_BURST(20*4, prot, freq(1, 3), resp);
+	axi_mst_0_agent.AXI4LITE_WRITE_BURST(20*4, prot, freq(6, 8), resp);
 	axi_mst_0_agent.AXI4LITE_WRITE_BURST(21*4, prot, 0, resp);
 
 	// FREQ7/PHASE7.
-	axi_mst_0_agent.AXI4LITE_WRITE_BURST(22*4, prot, freq(1, 3), resp);
+	axi_mst_0_agent.AXI4LITE_WRITE_BURST(22*4, prot, freq(7, 8), resp);
 	axi_mst_0_agent.AXI4LITE_WRITE_BURST(23*4, prot, 0, resp);
 
 	$display("###############################");
@@ -293,7 +293,7 @@ initial begin
 	s_axis_tvalid 	<= 0;
 
 	// Open file with Coefficients.
-	fd = $fopen("../../../../../tb/data_iq.txt","r");
+	fd = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/data_iq.txt","r");
 
 	wait(tb_data);
 	@(posedge aclk);
@@ -330,14 +330,14 @@ initial begin
 	shortint real_d7, imag_d7;
 
 	// Output file.
-	fd0 = $fopen("../../../../../tb/dout_0.csv","w");
-	fd1 = $fopen("../../../../../tb/dout_1.csv","w");
-	fd2 = $fopen("../../../../../tb/dout_2.csv","w");
-	fd3 = $fopen("../../../../../tb/dout_3.csv","w");
-	fd4 = $fopen("../../../../../tb/dout_4.csv","w");
-	fd5 = $fopen("../../../../../tb/dout_5.csv","w");
-	fd6 = $fopen("../../../../../tb/dout_6.csv","w");
-	fd7 = $fopen("../../../../../tb/dout_7.csv","w");
+	fd0 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_0.csv","w");
+	fd1 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_1.csv","w");
+	fd2 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_2.csv","w");
+	fd3 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_3.csv","w");
+	fd4 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_4.csv","w");
+	fd5 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_5.csv","w");
+	fd6 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_6.csv","w");
+	fd7 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_7.csv","w");
 
 	// Data format.
 	$fdisplay(fd0, "valid, real, imag");
@@ -388,6 +388,7 @@ initial begin
 	$fclose(fd5);
 	$fclose(fd6);
 	$fclose(fd7);
+	$finish;
 end
 
 always begin
