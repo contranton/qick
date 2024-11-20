@@ -291,9 +291,9 @@ initial begin
 	int i;
 	bit signed [15:0] vali, valq;
 	s_axis_tvalid 	<= 0;
-
+	
 	// Open file with Coefficients.
-	fd = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/data_iq.txt","r");
+	fd = $fopen("../../../../../../../sim_data/data_iq.txt","r");
 
 	wait(tb_data);
 	@(posedge aclk);
@@ -330,14 +330,14 @@ initial begin
 	shortint real_d7, imag_d7;
 
 	// Output file.
-	fd0 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_0.csv","w");
-	fd1 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_1.csv","w");
-	fd2 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_2.csv","w");
-	fd3 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_3.csv","w");
-	fd4 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_4.csv","w");
-	fd5 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_5.csv","w");
-	fd6 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_6.csv","w");
-	fd7 = $fopen("/data/javierc/004_QICK_NewFeatures/firmware/ip/axis_pfb_readout_v4/src/tb/dout_7.csv","w");
+	fd0 = $fopen("../../../../../../../sim_data/dout_0.csv","w");
+	fd1 = $fopen("../../../../../../../sim_data/dout_1.csv","w");
+	fd2 = $fopen("../../../../../../../sim_data/dout_2.csv","w");
+	fd3 = $fopen("../../../../../../../sim_data/dout_3.csv","w");
+	fd4 = $fopen("../../../../../../../sim_data/dout_4.csv","w");
+	fd5 = $fopen("../../../../../../../sim_data/dout_5.csv","w");
+	fd6 = $fopen("../../../../../../../sim_data/dout_6.csv","w");
+	fd7 = $fopen("../../../../../../../sim_data/dout_7.csv","w");
 
 	// Data format.
 	$fdisplay(fd0, "valid, real, imag");
